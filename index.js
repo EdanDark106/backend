@@ -6,7 +6,13 @@ app.use(express.json());
 
 app.get('/',(req, res)=> {res.send('desde GET')});
 app.post('/', async(req, res)=> {
-    await check('nombre').notEmpty().withMessage('El nombre no puede ir vacio').run(req);
+    await check('nombre')
+        .notEmpty().withMessage('El nombre no puede ir vacio').run(req);
+    await check('nota')
+        .notEmpty().withMessage('lanota no puede ir vacia').run(req)
+        .isNumeric().withMessage('La nota debe ser numerica')
+        .custom(resultado => 0 <= resultado && resultado <= 100).withMessage('Lanota debe ser positiva')
+        .run(req);
     const resultado = validationResoult;
     console.log(resultado.array()); //.maped()
     res.send(resultado.array());
@@ -30,3 +36,4 @@ http://localhost:${puerto}`);
 
 
 
+//validar el email
