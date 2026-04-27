@@ -11,8 +11,9 @@ const pool = mysql.createPool({
     database: 'basededatos'
 });
 
-app.get('/', (req, res) => {
-    res.send('desde GET');
+app.get('/', async (req, res) => {
+    const [resultado] = await pool.query('SELECT * FROM productos');
+    res.send(resultado);
 });
 
 const PUERTO = 3001;
