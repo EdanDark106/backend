@@ -2,3 +2,4 @@
 
 //validar el email
 //investigar cual es elpass debil fuerte y intermedio
+//MODELO ENTUIDAD RELACION DICCIONARIO9 DE 
